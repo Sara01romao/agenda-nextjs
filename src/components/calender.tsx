@@ -3,13 +3,16 @@
 
 import React, { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
+import {ptBR } from "react-day-picker/locale";
 import 'react-day-picker/dist/style.css';
+
 
 
 export default function Calender(){
     const [selected, setSelected] = useState<Date | undefined>();
     const disabledDates = [
         new Date(2024, 11, 25), //  ano, mes, dia
+        new Date(2024, 11, 24), 
         new Date(2025, 1, 3),   
       ];
 
@@ -26,12 +29,14 @@ export default function Calender(){
       <DayPicker
         className="p-5 border rounded-lg shadow-sm"
         mode="single"
+        locale={ptBR}
         selected={selected}
         onSelect={(date) => setSelected(date as Date)}
         disabled={disabledDates}
-       
+        
+
       />
-      {selected && <p className="mt-4">Data selecionada: {selected.toDateString()}</p>}
+      {/* {selected && <p className="mt-4">Data selecionada: {selected.toDateString()}</p>} */}
     </div>
   );
 }
