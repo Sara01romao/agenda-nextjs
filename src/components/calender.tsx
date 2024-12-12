@@ -5,8 +5,7 @@ import React, { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import {ptBR } from "react-day-picker/locale";
 import 'react-day-picker/dist/style.css';
-
-
+import { isSameDay } from 'date-fns';
 
 export default function Calender(){
     const [selected, setSelected] = useState<Date | undefined>();
@@ -15,6 +14,14 @@ export default function Calender(){
         new Date(2024, 11, 24), 
         new Date(2025, 1, 3),   
       ];
+    
+    const isDisabled = (date: Date) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); 
+      return date < today || disabledDates.some((disabledDate) =>
+        isSameDay(date, disabledDate)
+      );
+    };
 
   return (
     <div className="mb-8">
@@ -32,7 +39,7 @@ export default function Calender(){
         locale={ptBR}
         selected={selected}
         onSelect={(date) => setSelected(date as Date)}
-        disabled={disabledDates}
+        disabled={isDisabled}
         
 
       />
