@@ -20,22 +20,20 @@ export default function CreatePage(){
         <div className=" max-w-7xl mx-auto grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
          <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-start">
          
-            <h1 className="text-2xl font-bold mb-8"> Criar Agendamentos</h1>
-          <div className="w-full flex justify-between border">
+          <h1 className="text-2xl font-bold mb-8"> Criar Agendamentos</h1>
+
+          <div className="w-full flex justify-center border gap-5">
             
-            <div>
-                <h2>Informações Cliente</h2>
+            <div className="w-full p-3">
+                <h2 className="text-xl font-medium mb-3">Informações Cliente</h2>
                 <div>
                     <ClientSearchForm/>
                 </div>
-
-               
-
             </div>
 
-            <div>
+            {/* <div className="relative z-10 w-full bg-white border rounded-md mt-1 shadow-lg ">
                 <DayPicker  mode="multiple" selected={selected} onSelect={handleSelect} />
-            </div>
+            </div> */}
           </div>
             
 
