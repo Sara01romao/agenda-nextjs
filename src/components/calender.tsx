@@ -33,8 +33,9 @@ export default function Calender(){
 
         Datas Disponíveis
       </h2>
+
       <DayPicker
-        className="p-5 border rounded-lg shadow-sm"
+        className="p-2 border rounded-lg shadow-sm w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-sm md:text-base"
         mode="single"
         locale={ptBR}
         selected={selected}

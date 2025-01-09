@@ -6,6 +6,9 @@ body{
   background: #F3F4F6;
 }
 
+.rdp-day_button{
+  font-weight: 600 !important;
+}
 .rdp-day_button::after {
   content: '';
   width: 5px;
@@ -19,9 +22,13 @@ body{
   content: none;
 }
 
-.rdp-day_button:disabled{
+/* .rdp-day_button:disabled{
   background-color: rgb(189, 189, 189) !important;
+  
+} */
 
+.rdp-chevron{
+  fill: #229BFF !important;
 }
 
 
