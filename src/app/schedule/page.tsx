@@ -4,14 +4,18 @@ import Link from "next/link";
 
 export default function Schedule() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 pt-0 sm:p-20 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col row-start-2 items-center sm:items-start max-w-5xl w-full ">
 
-        <div className="flex items-start gap-5">
+        <h1 className="relative text-2xl font-semibold  mb-5 mt-7 ml-5 mr-auto sm:text-left text-gray-800 before:absolute before:inset-x-0 before:bottom-[-5px] before:h-1 before:bg-[#229BFF] before:w-full before:mx-auto">
+            Agenda
+        </h1>
+
+        <div className="bg-white rounded-xl flex flex-wrap  gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
             <Calender/>
             
-            <div>
-              <h1 className="text-2xl font-bold mb-8">Agendamentos (1)</h1>
+            <div className="mx-auto">
+              <h2 className="text-2xl font-bold mb-8">Agendamentos (1)</h2>
 
               <div className="flex justify-between w-full pr-4  mb-9">
                   <div className="relative">
@@ -61,7 +65,7 @@ export default function Schedule() {
                     <thead className="ltr:text-left rtl:text-right">
                       <tr>
                         <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Nome</th>
-                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Data</th>
+                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Data Agendada</th>
                         <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Status</th>
                         <th className="px-4 py-2"></th>
                       </tr>
@@ -78,7 +82,7 @@ export default function Schedule() {
                             href={'/schedule/1'}
                             className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
                           >
-                            View
+                            Mais
                           </Link>
                         </td>
                       </tr>
