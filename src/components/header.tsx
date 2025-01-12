@@ -20,10 +20,10 @@ export default function Header(){
     const [isMenuOpen, setIsMenuOpen] = useState <boolean>(false)
 
     const menuItems:menuType[] = [
-        { href: "/", label: "Início", icon: PiHouseLine },
+        { href: "/", label: "Início", icon: PiHouseSimple },
         { href: "/schedule", label: "Agenda", icon: PiCalendarDots},
         { href: "/clients", label: "Clientes", icon: PiUsersThree },
-        { href: "/real-estate", label: "Imóveis", icon: PiHouseSimple},
+        { href: "/real-estate", label: "Imóveis", icon: PiHouseLine },
     ];
 
     const toggleMenu = () => {
