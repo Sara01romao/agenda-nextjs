@@ -1,29 +1,20 @@
 
-import { PiPencilSimple, PiTrash } from "react-icons/pi";
 import { ClientType } from "../api/clients/route";
+import Link from "next/link";
+import TableClients from "@/components/clients/tableClients";
+
+
+
+async function fetchClientes(): Promise<ClientType[]> {
+    const response = await fetch('http://localhost:3000/api/clients'); 
+    const data = await response.json();
+    return data.clientes;  
+  }
 
 
 export default async function Clients(){
     
-    const response = await fetch('http://localhost:3000/api/clients');
-    const {clientes}= await response.json() as ClientType;
-    console.log(clientes)
-
-    function formatShortDate(dateString: string): string {
-        const date = new Date(dateString);
-      
-       
-        if (isNaN(date.getTime())) {
-          throw new Error("Invalid date string");
-        }
-      
-        return new Intl.DateTimeFormat("pt-BR", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        }).format(date);
-    }
-      
+    const clientes = await fetchClientes();
 
     return(
         <div className="min-h-screen p-4 pb-20 pt-0 sm:p-4 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
@@ -34,48 +25,16 @@ export default async function Clients(){
                 </h1>
 
                 <div className="bg-white rounded-xl flex flex-wrap gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
-
+                    <Link href={'/clients/new'}  className="flex items-center gap-2 h-9 rounded bg-gray-800 px-4 py-2 text-sm ml-auto font-medium text-white hover:bg-gray-950">
+  
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 1V5.75M6 10.5V5.75M6 5.75H11M6 5.75H1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        Novo
+                    </Link>
                     <div className="relative overflow-x-auto w-full">
-                        <table className="w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                            <thead className="ltr:text-left rtl:text-right">
-                            <tr>
-                                <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Nome</th>
-                                <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">CPF</th>
-                                <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Data de Cadastro</th>
-                                <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Telefone</th>
-                                <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">WhatsApp</th>
-                                <th className="px-4 py-2"></th>
-                            </tr>
-                            </thead>
-
-                            <tbody className="divide-y divide-gray-200">
-                                
-
-                                {clientes.map((item:ClientType) =>(
-                                
-                                    <tr key={item.id_cliente}>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{item.nome_cliente}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.cpf_cliente}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {formatShortDate(item.data_cadastro_cliente)}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.telefone_cliente}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.whatsapp_cliente}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 flex items-center gap-3">
-                                            <button className="bg-[#E1E1E1] p-1 rounded-md hover:bg-[#C6C6C6]">
-                                                <PiTrash size={24} className="text-[#FF4040]"/>
-                                            </button>
-
-                                            <button className="bg-[#E1E1E1] p-1 rounded-md hover:bg-[#C6C6C6]">
-                                                <PiPencilSimple size={24} className="text-[#0BB661]"/>
-                                            </button>
-                                    
-                                        </td>
-                                    </tr>
-                                ))}
-                            
-
-                           
-                            </tbody>
-                        </table>
+                        <TableClients  clientes={clientes}/>
+                        
                     </div>
 
                 </div>
