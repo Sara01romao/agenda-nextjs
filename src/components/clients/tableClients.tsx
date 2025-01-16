@@ -2,7 +2,7 @@
 'use client';
 
 import { ClientType } from '@/app/api/clients/route';  
-import { useState } from 'react';
+import Link from 'next/link';
 import { PiTrash, PiPencilSimple } from 'react-icons/pi';
 
 type TabelaClientesProps = {
@@ -10,7 +10,7 @@ type TabelaClientesProps = {
 };
 
 export default function TableClients({ clientes }: TabelaClientesProps) {
-  const [clientesData, setClientesData] = useState(clientes);
+ 
 
   function handleEdit(id_cliente: number){
     console.log(`editar cliente com ID: ${id_cliente}`);
@@ -35,7 +35,7 @@ export default function TableClients({ clientes }: TabelaClientesProps) {
       </thead>
 
       <tbody className="divide-y divide-gray-200">
-        {clientesData.map((item) => (
+        {clientes.map((item) => (
           <tr key={item.id_cliente}>
             <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{item.nome_cliente}</td>
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.cpf_cliente}</td>
@@ -46,10 +46,12 @@ export default function TableClients({ clientes }: TabelaClientesProps) {
               <button onClick={() => handleDelete(item.id_cliente)} className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm">
                 <PiTrash size={24} className="text-[#FF4040]" />
               </button>
-
-              <button onClick={() => handleEdit(item.id_cliente)} className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm">
-                <PiPencilSimple size={24} className="text-[#0BB661]" />
-              </button>
+             
+              <Link href={`/clients/edit/${item.id_cliente}`}>
+                <button onClick={() => handleEdit(item.id_cliente)} className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm">
+                  <PiPencilSimple size={24} className="text-[#0BB661]" />
+                </button>
+              </Link>
             </td>
           </tr>
         ))}

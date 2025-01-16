@@ -5,7 +5,7 @@ import TableClients from "@/components/clients/tableClients";
 
 
 
-async function fetchClientes(): Promise<ClientType[]> {
+async function fetchClients(): Promise<ClientType[]> {
     const response = await fetch('http://localhost:3000/api/clients'); 
     const data = await response.json();
     return data.clientes;  
@@ -14,7 +14,7 @@ async function fetchClientes(): Promise<ClientType[]> {
 
 export default async function Clients(){
     
-    const clientes = await fetchClientes();
+    const clientes = await fetchClients();
 
     return(
         <div className="min-h-screen p-4 pb-20 pt-0 sm:p-4 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
