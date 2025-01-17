@@ -1,4 +1,6 @@
+import AddForm from "@/components/clients/AddForm";
 import Link from "next/link";
+import { PiUserPlus } from "react-icons/pi";
 
 export default function AddClient(){
 
@@ -8,13 +10,15 @@ export default function AddClient(){
                 <Link href={'/clients'} >Voltar</Link>
             </div>
             <main className="flex flex-col mx-auto row-start-2 items-center sm:items-start max-w-5xl w-full ">
-                <h1 className="relative text-2xl font-semibold mb-5 mt-7 ml-5 mr-auto sm:text-left text-gray-800 before:absolute before:inset-x-0 before:bottom-[-5px] before:h-1 before:bg-[#229BFF] before:w-full before:mx-auto">
-                 Cadastrar
-                </h1>
+                
+                <div className="bg-white rounded-xl  gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
+                    <h1 className="relative flex justify-center items-center gap-3 text-2xl font-semibold mb-5 mt-7 ml-5 mr-auto sm:text-left text-gray-800 before:absolute before:inset-x-0 before:bottom-[-5px] ">
+                        
+                        <PiUserPlus size={25}/>
+                        Cadastrar Cliente
+                    </h1>
 
-                <div className="bg-white rounded-xl flex flex-wrap gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
-                    
-
+                    <AddForm />
                 </div>
             </main>
         </div>
