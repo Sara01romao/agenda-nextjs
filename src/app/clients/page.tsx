@@ -33,12 +33,13 @@ export default async function Clients(){
                         Novo
                     </Link>
                     <div className="relative overflow-x-auto w-full">
-                        <TableClients  clientes={clientes}/>
+                        <TableClients  initialClientes={clientes}/>
                         
                     </div>
 
                 </div>
             </main>
+            
         </div>
     )
 }

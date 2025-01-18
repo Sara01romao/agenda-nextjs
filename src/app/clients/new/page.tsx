@@ -1,6 +1,6 @@
 import AddForm from "@/components/clients/AddForm";
 import Link from "next/link";
-import { PiUserPlus } from "react-icons/pi";
+import {PiUserPlusBold } from "react-icons/pi";
 
 export default function AddClient(){
 
@@ -14,7 +14,7 @@ export default function AddClient(){
                 <div className="bg-white rounded-xl  gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
                     <h1 className="relative flex justify-center items-center gap-3 text-2xl font-semibold mb-5 mt-7 ml-5 mr-auto sm:text-left text-gray-800 before:absolute before:inset-x-0 before:bottom-[-5px] ">
                         
-                        <PiUserPlus size={25}/>
+                        <PiUserPlusBold size={25}/>
                         Cadastrar Cliente
                     </h1>
 

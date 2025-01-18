@@ -58,16 +58,17 @@ export default function AddForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 p-6 bg-white max-w-2xl mx-auto  rounded-lg"
+      className=" p-6 bg-white max-w-2xl mx-auto rounded-lg"
     >
-      <div>
+      <div className="mb-5">
         <label htmlFor="nome_cliente" className="block font-medium">
-          Nome
+         Nome
         </label>
         <input
           type="text"
           id="nome_cliente"
           name="nome_cliente"
+          placeholder="Seu nome"
           value={formData.nome_cliente}
           onChange={handleChange}
           className="w-full border rounded-lg px-4 py-2"
@@ -75,7 +76,7 @@ export default function AddForm() {
         />
       </div>
 
-      <div>
+      <div className="mb-5">
         <label htmlFor="cpf_cliente" className="block font-medium">
           CPF
         </label>
@@ -83,6 +84,7 @@ export default function AddForm() {
           type="text"
           id="cpf_cliente"
           name="cpf_cliente"
+          placeholder="000.000.000-00"
           value={formData.cpf_cliente}
           onChange={handleChange}
           className="w-full border rounded-lg px-4 py-2"
@@ -90,7 +92,7 @@ export default function AddForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="telefone_cliente" className="block font-medium">
             Telefone
@@ -99,6 +101,7 @@ export default function AddForm() {
             type="text"
             id="telefone_cliente"
             name="telefone_cliente"
+            placeholder="(00) 0000-0000"
             value={formData.telefone_cliente}
             onChange={handleChange}
             className="w-full border rounded-lg px-4 py-2"
@@ -113,6 +116,7 @@ export default function AddForm() {
             type="text"
             id="whatsapp_cliente"
             name="whatsapp_cliente"
+            placeholder="(00) 0000-0000"
             value={formData.whatsapp_cliente}
             onChange={handleChange}
             className="w-full border rounded-lg px-4 py-2"
@@ -124,7 +128,7 @@ export default function AddForm() {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-2 px-4 rounded-lg ${
+        className={`w-full py-2 px-4 rounded-lg mt-7 bg-[#028dff] hover:bg-[#1780d7] ${
           loading ? "bg-gray-400" : "bg-[#229BFF] text-white"
         }`}
       >

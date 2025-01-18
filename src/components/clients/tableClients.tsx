@@ -1,24 +1,35 @@
+'use client'
 
-'use client';
-
-import { ClientType } from '@/app/api/clients/route';  
+import { ClientType } from '@/app/api/clients/route';
 import Link from 'next/link';
 import { PiTrash, PiPencilSimple } from 'react-icons/pi';
+import { useState } from 'react';
 
 type TabelaClientesProps = {
-  clientes: ClientType[];
+  initialClientes: ClientType[];
 };
 
-export default function TableClients({ clientes }: TabelaClientesProps) {
- 
+export default function TableClients({ initialClientes }: TabelaClientesProps) {
+  const [clientes, setClientes] = useState<ClientType[]>(initialClientes);
 
-  function handleEdit(id_cliente: number){
-    console.log(`editar cliente com ID: ${id_cliente}`);
-  }
+  async function handleDelete(id_cliente: number) {
+    try {
+      const res = await fetch(`http://localhost:3000/api/clients/${id_cliente}`, {
+        method: "DELETE",
+      });
 
-  function handleDelete(id_cliente: number){
-    console.log(`deletar cliente com ID: ${id_cliente}`);
+      if (res.ok) {
+        setClientes((prevClientes) =>
+          prevClientes.filter((cliente) => cliente.id_cliente !== id_cliente)
+        );
 
+        alert( "Cliente removido com sucesso!");
+      } else {
+        console.error("Erro ao deletar o cliente");
+      }
+    } catch (error) {
+      console.error("Erro ao deletar o cliente:", error);
+    }
   }
 
   return (
@@ -43,14 +54,18 @@ export default function TableClients({ clientes }: TabelaClientesProps) {
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.telefone_cliente}</td>
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{item.whatsapp_cliente}</td>
             <td className="whitespace-nowrap px-4 py-2 flex items-center gap-3">
-              <button onClick={() => handleDelete(item.id_cliente)} className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm">
+              <button
+                onClick={() => handleDelete(item.id_cliente)}
+                className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm"
+              >
                 <PiTrash size={24} className="text-[#FF4040]" />
               </button>
-             
-              <Link href={`/clients/edit/${item.id_cliente}`}>
-                <button onClick={() => handleEdit(item.id_cliente)} className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm">
-                  <PiPencilSimple size={24} className="text-[#0BB661]" />
-                </button>
+
+              <Link
+                href={`/clients/edit/${item.id_cliente}`}
+                className="p-1 rounded-md border bg-white hover:bg-gray-50 shadow-sm"
+              >
+                <PiPencilSimple size={24} className="text-[#0BB661]" />
               </Link>
             </td>
           </tr>
