@@ -56,9 +56,9 @@ export default function EditForm({ client, clientId }: ClientFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 p-6 bg-white shadow-lg rounded-lg"
+      className="p-6 bg-white max-w-2xl mx-auto rounded-lg"
     >
-      <div>
+      <div className="mb-5">
         <label htmlFor="nome_cliente" className="block font-medium">Nome</label>
         <input
           type="text"
@@ -70,7 +70,7 @@ export default function EditForm({ client, clientId }: ClientFormProps) {
         />
       </div>
 
-      <div>
+      <div className="mb-5">
         <label htmlFor="cpf_cliente" className="block font-medium">CPF</label>
         <input
           type="text"
@@ -110,7 +110,7 @@ export default function EditForm({ client, clientId }: ClientFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-2 px-4 rounded-lg ${loading ? "bg-gray-400" : "bg-indigo-600 text-white"}`}
+        className={`w-full py-2 px-4 rounded-lg mt-7 bg-[#028dff]  ${loading ? "bg-gray-400" : "hover:bg-[#1780d7] text-white"}`}
       >
         {loading ? "Salvando..." : "Salvar"}
       </button>
