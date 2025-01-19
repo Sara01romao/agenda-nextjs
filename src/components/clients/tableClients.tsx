@@ -13,6 +13,8 @@ export default function TableClients({ initialClientes }: TabelaClientesProps) {
   const [clientes, setClientes] = useState<ClientType[]>(initialClientes);
 
   async function handleDelete(id_cliente: number) {
+    const confirm = window.confirm("Tem certeza que deseja excluir o cliente?");
+  if (!confirm) return;
     try {
       const res = await fetch(`http://localhost:3000/api/clients/${id_cliente}`, {
         method: "DELETE",
