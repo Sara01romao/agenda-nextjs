@@ -1,7 +1,19 @@
-import { PiPencilSimple, PiTrash } from "react-icons/pi";
+import TableEspaces from "@/components/real-estate/tableSpace";
+import { SpaceType } from "../api/real-estate/route";
+import Link from "next/link";
 
 
-export default function RealEstate(){
+async function fetchSpaces(): Promise<SpaceType[]> {
+    const response = await fetch('http://localhost:3000/api/real-estate'); 
+    const data = await response.json();
+    return data.espaco;  
+  }
+
+
+export default async function RealEstate(){
+
+    
+    const spaces = await fetchSpaces();
 
     return(
         <div className="min-h-screen p-4 pb-20 pt-0 sm:p-4 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
@@ -12,42 +24,15 @@ export default function RealEstate(){
                         </h1>
         
                         <div className="bg-white rounded-xl flex flex-wrap gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
-        
+                            <Link href={'/real-estate/new'}  className="flex items-center gap-2 h-9 rounded bg-gray-800 px-4 py-2 text-sm ml-auto font-medium text-white hover:bg-gray-950">
+  
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 1V5.75M6 10.5V5.75M6 5.75H11M6 5.75H1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                                Novo
+                            </Link>
                             <div className="relative overflow-x-auto w-full">
-                                <table className="w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                                    <thead className="ltr:text-left rtl:text-right">
-                                    <tr>
-                                        <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Nome</th>
-                                        <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">CPF</th>
-                                        <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Data de Cadastro</th>
-                                        <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">Telefone</th>
-                                        <th className="whitespace-nowrap px-4 py-2 text-left text-base font-medium text-gray-900">WhatsApp</th>
-                                        <th className="px-4 py-2"></th>
-                                    </tr>
-                                    </thead>
-        
-                                    <tbody className="divide-y divide-gray-200">
-                                        <tr>
-                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">John Doe</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">444.444.444-44</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">(11) 99999-1234</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">(11) 99999-1234</td>
-                                            <td className="whitespace-nowrap px-4 py-2 flex items-center gap-3">
-                                                <button className="bg-[#E1E1E1] p-1 rounded-md hover:bg-[#C6C6C6]">
-                                                      <PiTrash size={24} className="text-[#FF4040]"/>
-                                                </button>
-        
-                                                <button className="bg-[#E1E1E1] p-1 rounded-md hover:bg-[#C6C6C6]">
-                                                      <PiPencilSimple size={24} className="text-[#0BB661]"/>
-                                                </button>
-                                           
-                                            </td>
-                                        </tr>
-        
-                                   
-                                    </tbody>
-                                </table>
+                                <TableEspaces  initialSpace={spaces}/>
                             </div>
         
                         </div>
