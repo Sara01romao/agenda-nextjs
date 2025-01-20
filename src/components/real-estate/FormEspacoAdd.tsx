@@ -35,7 +35,7 @@ export default function FormEspacoAdd() {
 
       if (res.ok) {
         const data = await res.json();
-        console.log('Resposta do servidor:', data); // Apenas para fins de debug
+        console.log('Resposta do servidor:', data); 
         toast.success('Espaço cadastrado com sucesso!');
         setFormData({
           nome_espaco: '',
