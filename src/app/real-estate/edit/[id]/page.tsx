@@ -27,7 +27,7 @@ export default async function EditSpace({ params }: SpaceIdParams) {
         <main className="flex pt-4  flex-col mx-auto row-start-2 items-center sm:items-start max-w-5xl w-full ">
             <div className="bg-white rounded-xl  gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
                 <div className=" px-3 flex flex-col mx-auto row-start-2 items-center sm:items-start max-w-5xl w-full">
-                    <Link href={'/clients'} className="flex items-center gap-1 font-medium text-gray-600 hover:text-gray-800">
+                    <Link href={'/real-estate'} className="flex items-center gap-1 font-medium text-gray-600 hover:text-gray-800">
                         <PiArrowCircleLeft size={30} className=""/>
                         Voltar
                     </Link>
