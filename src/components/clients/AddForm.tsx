@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface ClientFormProps {
   nome_cliente: string;
@@ -42,11 +43,14 @@ export default function AddForm() {
         throw new Error("Erro ao adicionar o cliente");
       }
 
-      const result = await res.json();
-      alert(result.message || "Cliente adicionado com sucesso!");
-
+    
+      toast.success('Cliente Cadastrado com sucesso!');
+        setTimeout(() => {
+          router.push('/clients');
+        }, 1500)
+        
      
-      router.push("/clients");
+  
     } catch (error) {
       console.error(error);
       alert("Erro ao salvar o cliente");

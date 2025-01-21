@@ -4,6 +4,7 @@ import { ClientType } from '@/app/api/clients/route';
 import Link from 'next/link';
 import { PiTrash, PiPencilSimple } from 'react-icons/pi';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 type TabelaClientesProps = {
   initialClientes: ClientType[];
@@ -25,7 +26,7 @@ export default function TableClients({ initialClientes }: TabelaClientesProps) {
           prevClientes.filter((cliente) => cliente.id_cliente !== id_cliente)
         );
 
-        alert( "Cliente removido com sucesso!");
+        toast.success('Cliente Deletado com sucesso!');
       } else {
         console.error("Erro ao deletar o cliente");
       }

@@ -33,10 +33,13 @@ export default function FormEspacoAdd() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        console.log('Resposta do servidor:', data); 
-        toast.success('Espaço cadastrado com sucesso!');
+      if (!res.ok) { 
+        const error = await res.json();
+        setMessage(error.error || 'Erro ao cadastrar o espaço.');
+      
+      }
+      
+      toast.success('Espaço cadastrado com sucesso!');
         setFormData({
           nome_espaco: '',
           endereco_espaco: '',
@@ -45,12 +48,9 @@ export default function FormEspacoAdd() {
         });
         setTimeout(() => {
           router.push('/real-estate');
-        }, 15000);
-       
-      } else {
-        const error = await res.json();
-        setMessage(error.error || 'Erro ao cadastrar o espaço.');
-      }
+        }, 1500);
+
+
     } catch (err) {
       console.error(err);
       setMessage('Erro ao cadastrar o espaço.');

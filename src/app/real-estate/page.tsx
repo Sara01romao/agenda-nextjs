@@ -1,6 +1,7 @@
 import TableEspaces from "@/components/real-estate/tableSpace";
 import { SpaceType } from "../api/real-estate/route";
 import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 
 
 async function fetchSpaces(): Promise<SpaceType[]> {
@@ -12,12 +13,11 @@ async function fetchSpaces(): Promise<SpaceType[]> {
 
 export default async function RealEstate(){
 
-    
     const spaces = await fetchSpaces();
 
     return(
         <div className="min-h-screen p-4 pb-20 pt-0 sm:p-4 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
-                    
+                     <Toaster position="top-center" />
                     <main className="flex flex-col mx-auto row-start-2 items-center sm:items-start max-w-5xl w-full ">
                         <h1 className="relative text-2xl font-semibold mb-5 mt-7 ml-5 mr-auto sm:text-left text-gray-800 before:absolute before:inset-x-0 before:bottom-[-5px] before:h-1 before:bg-[#229BFF] before:w-full before:mx-auto">
                         Imoveis

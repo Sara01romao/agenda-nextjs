@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface ClientFormProps {
   client: {
@@ -40,10 +41,11 @@ export default function EditForm({ client, clientId }: ClientFormProps) {
         throw new Error("Erro ao atualizar o cliente");
       }
 
-      const result = await res.json();
-      alert(result.message || "Cliente atualizado com sucesso!");
+      toast.success('Cliente Editato com sucesso!');
+      setTimeout(() => {
+        router.push('/clients');
+      }, 1500)
       
-      router.push("/clients");
 
     } catch (error) {
       console.error(error);

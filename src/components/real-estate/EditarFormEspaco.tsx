@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface SpaceFormProps {
   space: {
@@ -36,14 +37,16 @@ export default function EditSpaceForm({ space, spaceId }: SpaceFormProps) {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) {
+      if(!res.ok){
         throw new Error("Erro ao atualizar o espaço");
       }
 
-      const result = await res.json();
-      alert(result.message || "Espaço atualizado com sucesso!");
-      router.push("/real-estate");
-
+      toast.success('Espaço Editado com sucesso!');
+        
+        setTimeout(() => {
+          router.push('/real-estate');
+        }, 1500);
+        
     } catch (error) {
       console.error(error);
       setMessage("Erro ao salvar as alterações. Por favor, tente novamente.");
