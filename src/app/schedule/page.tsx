@@ -1,8 +1,14 @@
 import Calender from "@/components/calender";
+import TableSchedule from "@/components/schedule/table-schedule";
 import Link from "next/link";
+import { ScheduleType } from "../api/schedule/route";
 
 
-export default function Schedule() {
+export default async function Schedule() {
+   const response = await fetch('http://localhost:3000/api/schedule');
+   const data = (await response.json()) as ScheduleType[];
+   console.log(data)
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 pt-0 sm:p-20 max-[550px]:px-1 sm:pt-0 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col row-start-2 items-center sm:items-start max-w-5xl w-full ">
@@ -61,35 +67,9 @@ export default function Schedule() {
 
               </div>
               <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                    <thead className="ltr:text-left rtl:text-right">
-                      <tr>
-                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Nome</th>
-                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Data Agendada</th>
-                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Status</th>
-                        <th className="px-4 py-2"></th>
-                      </tr>
-                    </thead>
+                
 
-                    <tbody className="divide-y divide-gray-200">
-                      <tr>
-                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Lady gaga Santos...</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">20-23 de jan. de 2025</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700"><p className="flex items-baseline gap-1"><span className="p-1 rounded-full h-0.5 w-0.5 bg-green-500"></span>Pago</p></td>
-                        
-                        <td className="whitespace-nowrap px-4 py-2">
-                          <Link
-                            href={'/schedule/1'}
-                            className="inline-block rounded bg-[#028dff] px-4 py-2 text-xs font-medium text-white hover:bg-[#1780d7]"
-                          >
-                            Mais
-                          </Link>
-                        </td>
-                      </tr>
-
-                    
-                    </tbody>
-                  </table>
+                  <TableSchedule schedules={data} />
               </div>
             </div>
         
