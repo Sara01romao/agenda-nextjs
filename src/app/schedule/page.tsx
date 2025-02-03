@@ -17,7 +17,7 @@ export default async function Schedule() {
             Agenda
         </h1>
 
-        <div className="bg-white rounded-xl flex flex-wrap  gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
+        <div className="bg-white rounded-xl flex flex-wrap justify-center gap-5 w-full p-8 max-[550px]:px-1 max-sm:flex-col">
             <Calender/>
             
             <div className="mx-auto">
