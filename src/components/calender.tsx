@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import {ptBR } from "react-day-picker/locale";
 import 'react-day-picker/dist/style.css';
@@ -9,12 +9,34 @@ import { isSameDay } from 'date-fns';
 
 export default function Calender(){
     const [selected, setSelected] = useState<Date | undefined>();
+    const [datesSchedules, setDatesSchedules] = useState<string[]>([]);
     const disabledDates = [
         new Date(2024, 11, 25), //  ano, mes, dia
         new Date(2024, 11, 24), 
         new Date(2025, 1, 3),   
       ];
     
+      useEffect(() => {
+        
+        const fetchDates = async () => {
+          try {
+            const response = await fetch("http://localhost:3000/api/schedule?datas=true");
+            if (!response.ok) {
+              throw new Error("Erro ao buscar as datas");
+            }
+            const data = await response.json();
+
+            setDatesSchedules(data ); 
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchDates(); 
+      }, []);
+
+      console.log("data",datesSchedules)
+
     const isDisabled = (date: Date) => {
       const today = new Date();
       today.setHours(0, 0, 0, 0); 
