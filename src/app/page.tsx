@@ -1,8 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calender } from "./_components/calender";
+
 import Link from "next/link";
+import { CalendarComponent } from "./_components/calendar";
 
 export default function Home() {
+  const bookedDates: Date[] = [
+    new Date(2025, 7, 6),
+    new Date(2025, 7, 9),
+    new Date(2025, 8, 10),
+  ]
 
   return (
     <div className="font-sans  items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -17,7 +23,7 @@ export default function Home() {
         <TabsContent value="casa" className="h-full border w-full px-8">
           <h2 className="font-bold my-6">Datas Disponíveis</h2>
           <div className="flex items-start gap-4">
-            <Calender />
+            <CalendarComponent booked={bookedDates} />
             <Link href="/scheduling" className="flex bg-black text-white">Novo Agendamento</Link>
           </div>
         </TabsContent>
