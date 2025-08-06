@@ -11,15 +11,15 @@ export function CalendarComponent({ booked }: CalendarProps) {
 
   useEffect(() => {
     const infoDate = new Date();
+    const today = infoDate.getDate()
     const year = infoDate.getFullYear();
     const month = infoDate.getMonth();
-
-    console.log(month, infoDate.getDay())
-    setDate(new Date(year, month));
+    
+    setDate(new Date(year, month, today));
   }, []);
 
   if (!date) {
-    return <div className="h-[300px] w-full animate-pulse rounded-lg bg-gray-100" />;
+    return <div className="h-[300px] w-full animate-pulse rounded-lg bg-gray-100 flex items-center justify-items-center"><p className="m-auto">Carregando...</p></div>;
   }
 
   return (
@@ -29,7 +29,16 @@ export function CalendarComponent({ booked }: CalendarProps) {
       numberOfMonths={2}
       selected={date}
       onSelect={setDate}
-      disabled={booked}
+      disabled={(date) => {
+        const today = new Date();
+       
+        return (
+          date < today ||
+          booked.some(
+            (bookedDate) => date.toDateString() === bookedDate.toDateString()
+          )
+        );
+      }}
       className="rounded-lg border shadow-sm"
     />
   );
