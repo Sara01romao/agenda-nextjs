@@ -29,7 +29,7 @@ export function TabsComponents({ value, propertyScheduling }: TabsProps) {
     return new Date(dateFormat.replaceAll("-", ","));
   }
 
-  function formDate(date: string) {
+  function formatDate(date: string) {
     const data = new Date(date);
     return new Intl.DateTimeFormat('pt-BR').format(data);
   }
@@ -40,7 +40,7 @@ export function TabsComponents({ value, propertyScheduling }: TabsProps) {
         <h2 className="font-bold mt-6 text-black">Datas Disponíveis {propertyScheduling.name} </h2>
         <div className="flex flex-col items-start gap-4  ">
           <Button variant="outline" asChild>
-            <Link href="/scheduling/2" className="w-[200px] flex bg-black text-white ml-auto">
+            <Link href={`/scheduling/${propertyScheduling.id}`}  className="w-[200px] flex bg-black text-white ml-auto">
               <MdDateRange />
               Novo Agendamento
             </Link>
@@ -63,13 +63,13 @@ export function TabsComponents({ value, propertyScheduling }: TabsProps) {
             <TableBody>
               {propertyScheduling.scheduling.map(client =>
                 <TableRow key={client.id}>
-                  <TableCell className="font-medium flex flex-wrap">{client.dates.map(date => <p key={date}>{formDate(date)}</p>)}</TableCell>
+                  <TableCell className="font-medium flex flex-wrap">{client.dates.map(date => <p key={date}>{formatDate(date)}</p>)}</TableCell>
                   <TableCell>{client.status}</TableCell>
                   <TableCell>{client.name}</TableCell>
                   <TableCell className="text-righ flex gap-2 items-center justify-end">
                     {client.phone}
                     <Button variant="outline" className="bg-[#35c16a] hover:bg-[#26b55c]" asChild>
-                      <Link href="/scheduling/2" >
+                      <Link href={`/scheduling/"${propertyScheduling.id}`} >
                         <FaWhatsapp color="#fff" />
                       </Link>
                     </Button>
