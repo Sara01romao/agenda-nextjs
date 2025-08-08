@@ -16,17 +16,16 @@ export default function Home() {
   }
 
   return (
-    <div className="font-sans items-center justify-items-center min-h-screen  pb-20  sm:p-20">
-
-      <Tabs defaultValue="property-1" className="max-w-[1000px] w-full mb-10 text- ">
-        <TabsList>
-          {data.map(item =>
-            <TabsTrigger key={item.id} value={item.id}>{item.name}</TabsTrigger>
-          )}
+    <div className="font-sans items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20">
+      <Tabs defaultValue="property-1" className="max-w-[1000px] w-full mb-10">
+        <TabsList className="flex flex-wrap h-auto gap-2">
+          {data.map(tabBtn =>
+            <TabsTrigger key={tabBtn.id} value={tabBtn.id}>{tabBtn.name}</TabsTrigger>
+          )}          
         </TabsList>
 
-        {data.map(item =>
-          <TabsComponents key={item.id} value={item.id} propertyScheduling={item} />
+        {data.map(tab =>
+          <TabsComponents key={tab.id} value={tab.id} propertyScheduling={tab} />
         )}
       </Tabs>
     </div>
