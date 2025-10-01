@@ -37,21 +37,23 @@ export function TabsComponents({ value, propertyScheduling }: TabsProps) {
   return (
     <>
       <TabsContent value={value} className=" border w-full px-8 pb-8 rounded-lg">
-        <h2 className="font-bold mt-6 text-black">Datas Disponíveis {propertyScheduling.name} </h2>
-        <div className="flex flex-col items-start gap-4  ">
-          <Button variant="outline" asChild>
-            <Link href={`/scheduling/${propertyScheduling.id}`}  className="w-[200px] flex bg-black text-white ml-auto">
-              <MdDateRange />
-              Novo Agendamento
-            </Link>
-          </Button>
-          <CalendarComponent booked={bookedDates} />
+
+        <div className="flex items-center justify-between flex-wrap my-6">
+          <h2 className="text-black">Datas Disponíveis : <span className="font-bold text-[#229BFF]">{propertyScheduling.name}</span></h2>
+          <div className="flex flex-col items-start gap-4  ">
+            <Button variant="outline" asChild>
+              <Link href={`/scheduling/${propertyScheduling.id}`} className="w-[200px] flex bg-black text-white ml-auto">
+                <MdDateRange />
+                Novo Agendamento
+              </Link>
+            </Button>
+          </div>
         </div>
+        <CalendarComponent booked={bookedDates} />
 
         <div className="mt-10 border w-full px-8 pb-8 rounded-lg">
           <h2 className="font-bold my-6 text-black">Agendamentos</h2>
           <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Data</TableHead>
