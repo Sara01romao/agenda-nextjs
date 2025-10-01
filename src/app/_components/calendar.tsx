@@ -1,6 +1,7 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
+
 
 interface CalendarProps {
   booked: Date[];
@@ -8,6 +9,16 @@ interface CalendarProps {
 
 export function CalendarComponent({ booked }: CalendarProps) {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+
 
   useEffect(() => {
     const infoDate = new Date();
@@ -26,7 +37,7 @@ export function CalendarComponent({ booked }: CalendarProps) {
     <Calendar
       mode="single"
       defaultMonth={date}
-      numberOfMonths={2}
+      numberOfMonths={isMobile ? 1 : 2}
       selected={date}
       onSelect={setDate}
       disabled={(date) => {
@@ -39,7 +50,8 @@ export function CalendarComponent({ booked }: CalendarProps) {
           )
         );
       }}
-      className="rounded-lg border shadow-sm"
+      
+      className="rounded-lg border shadow-sm  w-full max-w-[800px] m-auto"
     />
   );
 }
