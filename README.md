@@ -1,3 +1,81 @@
+<h2 align="center"> 💻 Agenda Local  </h2> 
+
+<p align="center">
+  
+
+  <img max-width="auto" height="auto"  src="https://github.com/user-attachments/assets/2c57e9ad-fa17-428d-b0e5-98877099142d">
+  
+  
+</p> 
+
+## 💻  Sobre o Projeto  
+Aplicação Front-End para agendamento de imóveis com duas páginas: uma exibe o calendário e lista de agendamentos, e outra permite cadastrar cliente, selecionar datas disponíveis e calcular automaticamente o valor da locação.
+
+ Exemplo: Mock da Propriedade
+```
+{
+    "id": "property-2",
+    "name": "Casa Lorem",
+    "city": "São Lorem",
+    "street": "Lorem de Barro",
+    "number_address": "22",
+    "state": "LI",
+    "cep": "01234-567",
+    "totalRevenue": 500.00,
+    "schedulingCount": 2,
+    "scheduling": [
+      {
+        "id": "sched-1",
+        "name": "Joelma Maria",
+        "phone": "(11) 55555-4444",
+        "dates": ["2025-08-08T00:00:00.000Z"],
+        "status": "Pago",
+        "value": 250.00,
+        "updatedAt": "2025-08-01T10:00:00.000Z"
+      },
+      {
+        "id": "sched-2",
+        "name": "Tony Stark",
+        "phone": "(00) 00000-0000",
+        "dates": ["2025-09-06T00:00:00.000Z", "2025-09-07T00:00:00.000Z"],
+        "status": "Pago",
+        "value": 250.00,
+        "updatedAt": "2025-08-01T10:00:00.000Z"
+      }
+    ]
+  }
+```
+
+
+<br>
+
+
+## :rocket: Tecnologias Usadas
+
+
+Front-end 
+```
+Nextjs
+Typescript
+Shadcn ui
+```
+Design
+```
+Figma
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
