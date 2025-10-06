@@ -1,12 +1,12 @@
-<h2 align="center"> 💻 Agenda Local  </h2> 
+<h2 align="center"> 💻 Agenda Local </h2> 
 
 <p align="center">
   
-
-  <img max-width="auto" height="auto"  src="https://github.com/user-attachments/assets/2c57e9ad-fa17-428d-b0e5-98877099142d">
-  
+  <img max-width="auto" height="auto"  src="https://github.com/user-attachments/assets/6b78899b-e73b-40f8-af1c-7a060c4f50ef">
+  <img max-width="auto" height="auto"  src="https://github.com/user-attachments/assets/446a0120-a92b-4262-9727-73aa59fb021a">
   
 </p> 
+
 
 ## 💻  Sobre o Projeto  
 Aplicação Front-End para agendamento de imóveis com duas páginas: uma exibe o calendário e lista de agendamentos, e outra permite cadastrar cliente, selecionar datas disponíveis e calcular automaticamente o valor da locação.
@@ -63,15 +63,6 @@ Design
 ```
 Figma
 ```
-
-
-
-
-
-
-
-
-
 
 
 
