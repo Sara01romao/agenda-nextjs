@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
+import { ptBR } from "date-fns/locale";
 
 interface CalendarProps {
   booked: Date[];
@@ -47,6 +48,7 @@ export function CalendarProperty({ booked, newScheduling, reset }: CalendarProps
         mode="multiple"
         defaultMonth={date}
         numberOfMonths={1}
+        locale={ptBR}
         selected={selectedDates}
         onSelect={handleSelect}
         required={false}

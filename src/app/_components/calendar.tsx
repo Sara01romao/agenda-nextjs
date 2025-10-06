@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
-
+import { ptBR } from "react-day-picker/locale";
 
 interface CalendarProps {
   booked: Date[];
@@ -31,9 +31,12 @@ export function CalendarComponent({ booked }: CalendarProps) {
     return <div className="h-[300px] w-full animate-pulse rounded-lg bg-gray-100 flex items-center justify-items-center"><p className="m-auto">Carregando...</p></div>;
   }
 
+  
+
   return (
     <Calendar
       mode="single"
+      locale={ptBR}
       defaultMonth={date}
       numberOfMonths={isMobile ? 1 : 2}
       selected={date}
