@@ -24,12 +24,12 @@ interface Scheduling {
 export const propertys: Property[] = [
   {
     "id": "property-1",
-    "name": "Sítio da Folha",
-    "city": "São Paulo",
-    "street": "João de Barro",
+    "name": "Sítio da Lorem",
+    "city": "Rio Lorem",
+    "street": "lorem ",
     "number_address": "22",
-    "state": "SP",
-    "cep": "01234-567",
+    "state": "IL",
+    "cep": "0000-0000",
     "totalRevenue": 500.00,
     "schedulingCount": 2,
     "scheduling": [
@@ -37,7 +37,7 @@ export const propertys: Property[] = [
         "id": "sched-1",
         "name": "Florence",
         "phone": "(11) 11111-1111",
-        "dates": ["2025-08-09T00:00:00.000Z"],
+        "dates": ["2025-10-09T00:00:00.000Z"],
         "status": "Pago",
         "value": 250.00,
         "updatedAt": "2025-08-01T10:00:00.000Z"
@@ -55,11 +55,11 @@ export const propertys: Property[] = [
   },
   {
     "id": "property-2",
-    "name": "Casa",
-    "city": "São Paulo",
-    "street": "João de Barro",
+    "name": "Casa Lorem",
+    "city": "São Lorem",
+    "street": "Lorem de Barro",
     "number_address": "22",
-    "state": "SP",
+    "state": "LI",
     "cep": "01234-567",
     "totalRevenue": 500.00,
     "schedulingCount": 2,

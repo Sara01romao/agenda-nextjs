@@ -7,7 +7,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -71,7 +70,7 @@ export function TabsComponents({ value, propertyScheduling }: TabsProps) {
                   <TableCell className="text-righ flex gap-2 items-center justify-end">
                     {client.phone}
                     <Button variant="outline" className="bg-[#35c16a] hover:bg-[#26b55c]" asChild>
-                      <Link href={`/scheduling/"${propertyScheduling.id}`} >
+                      <Link href="#" >
                         <FaWhatsapp color="#fff" />
                       </Link>
                     </Button>

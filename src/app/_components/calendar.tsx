@@ -18,11 +18,9 @@ export function CalendarComponent({ booked }: CalendarProps) {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-
-
   useEffect(() => {
     const infoDate = new Date();
-    const today = infoDate.getDate()
+    const today = infoDate.getDate();
     const year = infoDate.getFullYear();
     const month = infoDate.getMonth();
     
